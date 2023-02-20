@@ -1,4 +1,13 @@
+import 'dart:html';
+
+import 'package:atom_td/pages/electrons.dart';
+import 'package:atom_td/pages/molecules.dart';
+import 'package:atom_td/pages/myspace.dart';
+import 'package:atom_td/pages/nucleus.dart';
+import 'package:atom_td/pages/planets.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class NavBar extends StatelessWidget {
   const NavBar({super.key});
@@ -6,39 +15,109 @@ class NavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: ListView(
-        children: [
-          UserAccountsDrawerHeader(
-            accountName: Text('accountName'),
-            accountEmail: Text('accountEmail'),
-          ),
-          ListTile(
-            leading: Icon(Icons.home),
-            title: Text('My Space'),
-            onTap: () => print('My space'),
-          )
-        ],
+      child: Container(
+        color: Color.fromARGB(255, 29, 150, 194),
+        child: ListView(
+          children: [
+            UserAccountsDrawerHeader(
+              accountName: Text('accountName'),
+              accountEmail: Text('accountEmail'),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.home,
+                color: Colors.white,
+              ),
+              title: Text(
+                'My Space',
+                style: TextStyle(color: Colors.white),
+              ),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => new MySpace()));
+              },
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.monitor,
+                color: Colors.white,
+              ),
+              title: Text(
+                'Molecules',
+                style: TextStyle(color: Colors.white),
+              ),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => new Molecules()));
+              },
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.contacts,
+                color: Colors.white,
+              ),
+              title: Text(
+                'Electrons',
+                style: TextStyle(color: Colors.white),
+              ),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => new Electrons()));
+              },
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.person,
+                color: Colors.white,
+              ),
+              title: Text(
+                'Nucleus',
+                style: TextStyle(color: Colors.white),
+              ),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => new Nucleus()));
+              },
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.star_outline_rounded,
+                color: Colors.white,
+              ),
+              title: Text(
+                'Planets',
+                style: TextStyle(color: Colors.white),
+              ),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => new Planets()));
+              },
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.gamepad,
+                color: Colors.white,
+              ),
+              title: Text(
+                'Fork',
+                style: TextStyle(color: Colors.white),
+              ),
+              onTap: () {
+                const url = 'https://github.com/td-locus';
+                launchURL(url);
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
 }
 
-class AtomHome extends StatefulWidget {
-  const AtomHome({super.key});
-
-  @override
-  State<AtomHome> createState() => _AtomHomeState();
-}
-
-class _AtomHomeState extends State<AtomHome> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      drawer: NavBar(),
-      appBar: AppBar(
-        title: Text('Sidebar'),
-      ),
-      body: Center(),
-    );
+launchURL(String url) async {
+  if (await canLaunch(url)) {
+    await launch(url, forceWebView: true);
+  } else {
+    throw 'Could not launch $url';
   }
 }

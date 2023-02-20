@@ -1,3 +1,4 @@
+import 'package:atom_td/pages/myspace.dart';
 import 'package:flutter/material.dart';
 
 import 'atom_home.dart';
@@ -14,7 +15,7 @@ class atom extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Atom",
-      home: AtomHome(),
+      home: MySpace(),
     );
   }
 }
