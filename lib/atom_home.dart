@@ -16,9 +16,22 @@ class NavBar extends StatelessWidget {
         color: const Color.fromARGB(255, 29, 150, 194),
         child: ListView(
           children: [
-            const UserAccountsDrawerHeader(
-              accountName: Text('accountName'),
-              accountEmail: Text('accountEmail'),
+            UserAccountsDrawerHeader(
+              decoration: BoxDecoration(
+                color: Color.fromARGB(255, 29, 150, 194),
+              ),
+              accountName: Text('username'),
+              accountEmail: Text('useremail@gmail.com'),
+              currentAccountPicture: CircleAvatar(
+                child: ClipOval(
+                  child: Image.network(
+                    'https://avatars.githubusercontent.com/u/47023834?s=200&v=4',
+                    width: 90,
+                    height: 90,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
             ),
             ListTile(
               leading: const Icon(
