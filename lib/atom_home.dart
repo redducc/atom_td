@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:atom_td/pages/electrons.dart';
 import 'package:atom_td/pages/molecules.dart';
 import 'package:atom_td/pages/myspace.dart';
@@ -7,7 +5,6 @@ import 'package:atom_td/pages/nucleus.dart';
 import 'package:atom_td/pages/planets.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 
 class NavBar extends StatelessWidget {
   const NavBar({super.key});
@@ -16,19 +13,19 @@ class NavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: Container(
-        color: Color.fromARGB(255, 29, 150, 194),
+        color: const Color.fromARGB(255, 29, 150, 194),
         child: ListView(
           children: [
-            UserAccountsDrawerHeader(
+            const UserAccountsDrawerHeader(
               accountName: Text('accountName'),
               accountEmail: Text('accountEmail'),
             ),
             ListTile(
-              leading: Icon(
+              leading: const Icon(
                 Icons.home,
                 color: Colors.white,
               ),
-              title: Text(
+              title: const Text(
                 'My Space',
                 style: TextStyle(color: Colors.white),
               ),
@@ -38,11 +35,11 @@ class NavBar extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: Icon(
+              leading: const Icon(
                 Icons.monitor,
                 color: Colors.white,
               ),
-              title: Text(
+              title: const Text(
                 'Molecules',
                 style: TextStyle(color: Colors.white),
               ),
@@ -52,11 +49,11 @@ class NavBar extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: Icon(
+              leading: const Icon(
                 Icons.contacts,
                 color: Colors.white,
               ),
-              title: Text(
+              title: const Text(
                 'Electrons',
                 style: TextStyle(color: Colors.white),
               ),
@@ -66,11 +63,11 @@ class NavBar extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: Icon(
+              leading: const Icon(
                 Icons.person,
                 color: Colors.white,
               ),
-              title: Text(
+              title: const Text(
                 'Nucleus',
                 style: TextStyle(color: Colors.white),
               ),
@@ -80,11 +77,11 @@ class NavBar extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: Icon(
+              leading: const Icon(
                 Icons.star_outline_rounded,
                 color: Colors.white,
               ),
-              title: Text(
+              title: const Text(
                 'Planets',
                 style: TextStyle(color: Colors.white),
               ),
@@ -94,11 +91,11 @@ class NavBar extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: Icon(
+              leading: const Icon(
                 Icons.gamepad,
                 color: Colors.white,
               ),
-              title: Text(
+              title: const Text(
                 'Fork',
                 style: TextStyle(color: Colors.white),
               ),
@@ -115,7 +112,9 @@ class NavBar extends StatelessWidget {
 }
 
 launchURL(String url) async {
+  // ignore: deprecated_member_use
   if (await canLaunch(url)) {
+    // ignore: deprecated_member_use
     await launch(url, forceWebView: true);
   } else {
     throw 'Could not launch $url';
