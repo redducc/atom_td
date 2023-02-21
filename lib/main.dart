@@ -15,6 +15,7 @@ class atom extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Atom",
+      theme: ThemeData(primaryColor: Color.fromARGB(255, 29, 150, 194)),
       home: MySpace(),
     );
   }
